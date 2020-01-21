@@ -1,0 +1,8 @@
+c:\users\g1vecjm\documents\visual studio 2015\Projects\search-in-excel\search-in-excel\bin\Debug\search-in-excel.exe.config
+C:\Users\G1VECJM\Documents\Visual Studio 2015\Projects\search-in-excel\search-in-excel\bin\Debug\search-in-excel.exe
+C:\Users\G1VECJM\Documents\Visual Studio 2015\Projects\search-in-excel\search-in-excel\bin\Debug\search-in-excel.pdb
+C:\Users\G1VECJM\Documents\Visual Studio 2015\Projects\search-in-excel\search-in-excel\bin\Debug\EPPlus.dll
+C:\Users\G1VECJM\Documents\Visual Studio 2015\Projects\search-in-excel\search-in-excel\bin\Debug\EPPlus.xml
+C:\Users\G1VECJM\Documents\Visual Studio 2015\Projects\search-in-excel\search-in-excel\obj\Debug\search-in-excel.csprojResolveAssemblyReference.cache
+C:\Users\G1VECJM\Documents\Visual Studio 2015\Projects\search-in-excel\search-in-excel\obj\Debug\search-in-excel.exe
+C:\Users\G1VECJM\Documents\Visual Studio 2015\Projects\search-in-excel\search-in-excel\obj\Debug\search-in-excel.pdb
