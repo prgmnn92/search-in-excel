@@ -1,0 +1,13 @@
+C:\Users\G1VECJM\documents\visual studio 2015\Projects\search-in-excel\search-gui\bin\Debug\search-gui.exe.config
+C:\Users\G1VECJM\documents\visual studio 2015\Projects\search-in-excel\search-gui\bin\Debug\search-gui.exe
+C:\Users\G1VECJM\documents\visual studio 2015\Projects\search-in-excel\search-gui\bin\Debug\search-gui.pdb
+C:\Users\G1VECJM\documents\visual studio 2015\Projects\search-in-excel\search-gui\obj\Debug\search-gui.csprojResolveAssemblyReference.cache
+C:\Users\G1VECJM\documents\visual studio 2015\Projects\search-in-excel\search-gui\obj\Debug\search_gui.Form1.resources
+C:\Users\G1VECJM\documents\visual studio 2015\Projects\search-in-excel\search-gui\obj\Debug\search_gui.Properties.Resources.resources
+C:\Users\G1VECJM\documents\visual studio 2015\Projects\search-in-excel\search-gui\obj\Debug\search-gui.csproj.GenerateResource.Cache
+C:\Users\G1VECJM\documents\visual studio 2015\Projects\search-in-excel\search-gui\obj\Debug\search-gui.exe
+C:\Users\G1VECJM\documents\visual studio 2015\Projects\search-in-excel\search-gui\obj\Debug\search-gui.pdb
+C:\Users\G1VECJM\documents\visual studio 2015\Projects\search-in-excel\search-gui\bin\Debug\search-in-excel.exe
+C:\Users\G1VECJM\documents\visual studio 2015\Projects\search-in-excel\search-gui\bin\Debug\EPPlus.dll
+C:\Users\G1VECJM\documents\visual studio 2015\Projects\search-in-excel\search-gui\bin\Debug\search-in-excel.pdb
+C:\Users\G1VECJM\documents\visual studio 2015\Projects\search-in-excel\search-gui\bin\Debug\EPPlus.xml

@@ -13,23 +13,49 @@ namespace search_in_excel
     {
         static void Main(string[] args)
         {
-
-            ConsoleSpiner spin = new ConsoleSpiner();
-            Console.Write("Working....");
-            while (true)
-            {
-                spin.Turn();
-            }
-
             string testString1 = @"C:\Users\G1VECJM\Downloads\temp\SYS-060\Simulation\";
             string testString2 = @"C:\Users\G1VECJM\Desktop\Data\";
+            string exit;
+            do
+            {
+                DirectorySearch searchObject = new DirectorySearch();
+                Console.WriteLine("Pfad eingeben: ");
+                string locationString = Console.ReadLine();
 
-            DirectorySearch test = new DirectorySearch(testString1);
+                searchObject.setLocation(locationString);
 
-            test.searchForString("ZV_DWA_Einfachhorn_Anf");
+                Console.WriteLine("Zu suchendes Signal(Schreibweise muss 1:1 übereinstimmen) eingeben: ");
+                string words = Console.ReadLine();
+
+                
+
+              
+
+                
+
+                Console.WriteLine(DateTime.Now);
+
+                //searchObject.searchForString("ESP_v_Signal");
 
 
-            Console.ReadLine();
+                foreach (string word in words.Split(null))
+                {
+                    searchObject.searchForString(word);
+
+                }
+
+
+
+                Console.WriteLine(DateTime.Now);
+                Console.WriteLine("Zum Beenden 'E' eingeben\n\rEnter zum Starten einer neuen Suche");
+                exit = Console.ReadLine();
+                exit = exit.ToLower();
+
+                locationString = "";
+                words = "";
+            } while (!exit.Equals("e"));
+
+           
         }
     }
 }

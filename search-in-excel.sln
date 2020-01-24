@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "search-in-excel", "search-in-excel\search-in-excel.csproj", "{3B9ED455-4B54-42AD-8FBB-1D6CAE8E63D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "search-gui", "search-gui\search-gui.csproj", "{1601F823-C421-48EF-AC92-912A7A358B29}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{3B9ED455-4B54-42AD-8FBB-1D6CAE8E63D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B9ED455-4B54-42AD-8FBB-1D6CAE8E63D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B9ED455-4B54-42AD-8FBB-1D6CAE8E63D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1601F823-C421-48EF-AC92-912A7A358B29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1601F823-C421-48EF-AC92-912A7A358B29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1601F823-C421-48EF-AC92-912A7A358B29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1601F823-C421-48EF-AC92-912A7A358B29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

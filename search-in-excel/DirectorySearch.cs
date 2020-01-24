@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using OfficeOpenXml;
-
+using System.Collections;
 
 namespace search_in_excel
 {
@@ -17,40 +17,50 @@ namespace search_in_excel
 
         string location;
         List<string> FileNames = new List<string>();
-        List<DirectorySearch> directorys = new List<DirectorySearch>();
+       // List<DirectorySearch> directorys = new List<DirectorySearch>();
         List<KeyValuePair<string, List<string>>> directoryListWithFiles = new List<KeyValuePair<string, List<string>>>();
 
+        
+
+        List<List<string>> retObj = new List<List<string>>();
+
+        /// <summary>
+        /// {
+        ///     pfad: [
+        ///         worksheet,
+        ///         signalname,
+        ///         ...
+        ///     ],
+        ///     
+        /// }
+        /// </summary>
+
+        // neuer Hashtable für jedes Worksheet
+        List<string> data = new List<string>();
+
+
+
+       
+        public DirectorySearch()
+        {
+
+        }
         public DirectorySearch(string location)
         {
             this.location = location;
         }
-        public void showFilesInFolder(string location, Dictionary<string, List<string>> data)
+
+        public void setLocation(string location)
         {
-            System.IO.DirectoryInfo ParentDirectory = new System.IO.DirectoryInfo(this.location);
-
-            Console.WriteLine($"Pfad: {this.location}");
-
-            foreach (System.IO.FileInfo f in ParentDirectory.GetFiles())
-            {
-                Console.WriteLine("Datei: " + f.Name);
-                this.FileNames.Add(f.Name);
-            }
-
-            directoryListWithFiles.Add(new KeyValuePair<string, List<string>>(this.location, this.FileNames));
-
-            foreach (System.IO.DirectoryInfo d in ParentDirectory.GetDirectories())
-            {
-                Console.WriteLine("Folder: " + d.Name);
-
-                string directoryString = this.location + d.Name + @"\";
-
-                DirectorySearch dir = new DirectorySearch(directoryString);
-
-                //dir.showFilesInFolder();
-
-                directorys.Add(dir);
-            }
+            this.location = location;
         }
+
+        public List<List<string>> getListObjects()
+        {
+
+            return retObj;
+        }
+
 
         public List<string> FilterExcelFiles(List<string> fileList)
         {
@@ -134,7 +144,10 @@ namespace search_in_excel
 
         public string getRowOfWorksheet(ExcelWorksheet worksheet, int row)
         {
-            string retString = $"In Reihe: {row} gefundene Werte...\n\r";
+            //cellObj = new KeyValuePair<string, string>("worksheet", worksheet.ToString());
+            //rowObj.Add(cellObj);
+            //retObj.Add(rowObj);
+            string retString = $"Signal in Zeile {row} gefunden: \n\r\n\r";
             for (var i = 1; i < 100; i++)
             {
                 var lineValue = worksheet.Cells[row, i].Value;
@@ -144,7 +157,17 @@ namespace search_in_excel
 
                     if (!lineValue.Equals(""))
                     {
-                        string colString = $"{worksheet.Cells[2, i].Value} - Wert: {lineValue}\n\r ";
+                        
+                        string tabs = (worksheet.Cells[2, i].Value == null || worksheet.Cells[2, i].Value.ToString().Length < 7) ? "\t\t" : "";
+                        string colString = $"{worksheet.Cells[2, i].Value} - \t\t{tabs}Wert: {lineValue}\n\r ";
+
+                        if(worksheet.Cells[2, i].Value != null && worksheet.Cells[2, i].Value.ToString() == "Signal")
+                        {
+                            List<string> foundValue = new List<string>();
+                            foundValue.Add(worksheet.ToString());
+                            foundValue.Add(lineValue.ToString());
+                            this.retObj.Add(foundValue);
+                        }
 
                         retString = String.Concat(retString, colString);
                     }                
@@ -156,25 +179,17 @@ namespace search_in_excel
 
         public string searchForString(string word)
         {
-
-            string testString1 = @"C:\Users\G1VECJM\Downloads\temp\SYS-060\Simulation\";
-            string testString2 = @"C:\Users\G1VECJM\Desktop\Data\";
-
-            //DirectorySearch test = new DirectorySearch(testString1);
-
-            List<string> dirList = createDirectoryList(testString1);
+            List<string> dirList = createDirectoryList(this.location);
 
             List<KeyValuePair<string, List<string>>> variable = createFolderObjectList(dirList);
 
             foreach (KeyValuePair<string, List<string>> t in variable)
             {
-                Console.WriteLine(t.Key);
                 foreach (string s in t.Value)
                 {
-                    //Console.WriteLine(s);
                     FileInfo fileInfo = new FileInfo(t.Key + s);
 
-                    //Console.WriteLine("Key + Value: " + t.Key + s);
+                    
 
                     using (var p = new ExcelPackage(fileInfo))
                     {
@@ -184,11 +199,14 @@ namespace search_in_excel
                             
                             for (var z = 1; z < ZEILEN; z++)
                             {
+
                                 for (var sp = 1; sp < SPALTEN; sp++)
                                 {
+                                    if (worksheet.Cells[z, 1].Value == null) break;
+
                                     var cellValue = worksheet.Cells[z, sp].Value;
 
-                                    if(cellValue != null)
+                                    if (cellValue != null)
                                     {
                                         cellValue = cellValue.ToString();
 
@@ -196,7 +214,8 @@ namespace search_in_excel
                                         {
                                             if ((String)cellValue == word)
                                             {
-                                                Console.WriteLine("In Worksheet "+ worksheet.ToString() + "gefundene Werte:");
+                                                Console.WriteLine($"Im File gefunden: \n\r{t.Key + s}\n\r");
+                                                Console.WriteLine("In Worksheet " + worksheet.ToString() + "gefundene Werte:");
                                                 Console.WriteLine();
                                                 Console.WriteLine(getRowOfWorksheet(worksheet, z));
                                                 Console.WriteLine();
@@ -208,17 +227,17 @@ namespace search_in_excel
                                         {
                                             Console.WriteLine(e.Message);
                                         }
-
-
                                     }
-                                   
-                                    
                                 }
                             }
                         }
                     }
+                    
+                    
+                    //this.data.Clear();
                 }
             }
+
 
             return null;
         }
